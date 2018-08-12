@@ -1,0 +1,7 @@
+netifaces>=0.10.5
+pyasn1>=0.1.9
+pylnk>=0.2
+pycrypto>=2.6.1
+impacket>=0.9.17
+netfilterqueue>=0.8.1
+scapy>=2.4.0
