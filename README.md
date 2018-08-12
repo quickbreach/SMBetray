@@ -13,7 +13,7 @@ More background info and demos can be found here http://quickbreach.io/2018/08/1
 # Installation
 Requires a system using iptables
 
-	./sudo bash install.sh 
+	sudo bash install.sh 
 
 # Usage
 First, run a bi-directional arp-cache poisoning attack between your victim, and their gateway or destination network shares, eg:
