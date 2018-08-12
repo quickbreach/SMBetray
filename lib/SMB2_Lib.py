@@ -351,6 +351,7 @@ class SMB2_Lib(object):
 		if(fname == None or fname in [".", "srvsvc", "lsarpc", "wkssvc", "samr"]):
 			return
 
+		fullName = self.REQUEST_TRACKER[int(packet['MessageID'])].FILE_NAME
 		# If this is the first read-response we're seeing, create the outfile
 		if self.REQUEST_TRACKER[int(packet['MessageID'])].LOCAL_OUT_FILE == "":
 			dirName 	= ""
@@ -370,13 +371,16 @@ class SMB2_Lib(object):
 					pass
 			fullName = dirName + "/" + shortName
 			outName = self.info['attackConfig'].PASSIVE_OUTPUT_DIR + "/" + fullName
+			
 			i = 0
-			while os.path.exists(outName):
-				if outName[-1] != "_0":
-					outName += "_0"
-				outName = outName[:-1] + str(i)
-			self.REQUEST_TRACKER[int(packet['MessageID'])].LOCAL_OUT_FILE = outName
+			if os.path.exists(outName):
+				newName = outName
+				while os.path.exists(newName + "_" + str(i)):
+					i += 1
+				newName += "_" + str(i)
+				outName = newName
 
+			self.REQUEST_TRACKER[int(packet['MessageID'])].LOCAL_OUT_FILE = outName
 		# Finally, add the new data to the outfile
 		with open(self.REQUEST_TRACKER[int(packet['MessageID'])].LOCAL_OUT_FILE, "a") as outFile:
 			outFile.write(str(resp['Buffer']))
