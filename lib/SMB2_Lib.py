@@ -371,15 +371,12 @@ class SMB2_Lib(object):
 					pass
 			fullName = dirName + "/" + shortName
 			outName = self.info['attackConfig'].PASSIVE_OUTPUT_DIR + "/" + fullName
-			
-			i = 0
-			if os.path.exists(outName):
-				newName = outName
-				while os.path.exists(newName + "_" + str(i)):
-					i += 1
-				newName += "_" + str(i)
-				outName = newName
 
+			i = 0
+			while os.path.exists(outName):
+				if outName[-1] != "_0":
+					outName += "_0"
+				outName = outName[:-1] + str(i)
 			self.REQUEST_TRACKER[int(packet['MessageID'])].LOCAL_OUT_FILE = outName
 		# Finally, add the new data to the outfile
 		with open(self.REQUEST_TRACKER[int(packet['MessageID'])].LOCAL_OUT_FILE, "a") as outFile:
