@@ -103,7 +103,7 @@ class SMB1_Lib(SMB_Core):
 					packet = self.negotiateReq_DowngradeToNTLM(packet)
 
 			return self.restackSMBChainedMessages([packet])
-		except Exception, e:
+		except Exception as e:
 			return rawData
 	# 
 	def handleResponse(self, rawData):
@@ -118,6 +118,6 @@ class SMB1_Lib(SMB_Core):
 					packet = self.negotiateResp_StripSMBDialects(packet)
 
 			return self.restackSMBChainedMessages([packet])
-		except Exception, e:
+		except Exception as e:
 			return rawData
 
