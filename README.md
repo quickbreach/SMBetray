@@ -8,7 +8,7 @@ In SMB connections, the security mechanisms protecting the integrity of the data
 
 This goal of this tool is to switch the aim of MiTM on SMB from attacking the server through relayed connections, to attacking the client through malicious files and backdoored/replaced data when the oppertunity strikes. Finally, since encryption is rarely ever used, at the bare minimum this tool allows for the stealing of files passed in cleartext over the network - which can prove useful for system enumeration, or damaging if the data intercepted is sensitive in nature (PCI, PII, etc).
 
-More background info and demos can be found here https://www.quickbreach.io/smbetray-backdooring-and-breaking-signatures/
+More background info and demos can be found here https://blog.quickbreach.io/smbetray-backdooring-and-breaking-signatures/
 
 # Installation
 Requires a system using iptables
